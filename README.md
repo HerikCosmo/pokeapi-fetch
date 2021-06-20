@@ -9,4 +9,4 @@ Projeto simples focado no consumo de uma API: [PokeApi](https://pokeapi.co/)
 
 ### Layout
 
-<img src="images/layout.png">
+<img src="images/layout-desktop.png">

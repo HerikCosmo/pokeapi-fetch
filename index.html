@@ -5,54 +5,11 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-    <h2>Pokemons 👍</h2>
-    <!-- <ul id='pokemons'></ul> -->
-    <div id="pokemons" style='display: flex; justify-content: space-between; flex-wrap: wrap;'></div>
+    <div id="pokemons"></div>
 </body>
 
-<script>
-
-    const ul = document.getElementById('pokemons')
-    const div = document.getElementById('pokemons')
-    const url = 'https://pokeapi.co/api/v2/pokemon?limit=151'
-
-    /*
-    fetch(url)
-        .then(pokemons => pokemons.json())
-        .then(data => data.results)
-        .then(pokemons => {
-            pokemons.forEach(pokemon => {
-                ul.innerHTML += `<li>${pokemon.name}</li>`
-            })
-        })
-        .catch(err => console.log(err))
-    */    
-
-    let pokemonList = []
-    for(i = 1; i <= 151; i++){
-        pokemonList.push(fetch(`https://pokeapi.co/api/v2/pokemon/${i}`).then(pokemon => pokemon.json()))
-    }
-    
-    Promise.all(pokemonList)
-        .then(pokemonList => {
-            return pokemonList.map(pokemon => {
-                return {name: pokemon.name, img: pokemon.sprites.other['official-artwork'].front_default} 
-            })
-        })
-        .then(pokemons => {
-            pokemons.forEach(pokemon => {
-                addPokemon(pokemon)
-            })
-        })
-        .catch(err => {
-            div.innerHTML = err
-        })
-        
-    function addPokemon(pokemon){
-        div.innerHTML += `<div style=' border-radius:50%; margin: 20px; padding: 40px; display: flex; flex-direction: column; text-align: center'><img src='${pokemon.img}' width=128><span>${pokemon.name}</span></div>`
-    }
-
-</script>
+<script src='js/app.js'></script>
 </html>
